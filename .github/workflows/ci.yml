@@ -1,0 +1,58 @@
+name: SmartVen CI
+
+on:
+  push:
+    branches: [ main, Danilo-backend ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: smartven_test
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: smart-ven-backend/package-lock.json
+
+      - name: Instalar dependências
+        run: |
+          cd smart-ven-backend
+          npm ci
+
+      - name: Gerar Prisma Client
+        run: |
+          cd smart-ven-backend
+          npx prisma generate
+        env:
+          DATABASE_URL: "mysql://root:root@localhost:3306/smartven_test"
+
+      - name: Rodar Migrations no banco de teste
+        run: |
+          cd smart-ven-backend
+          npx prisma migrate deploy
+        env:
+          DATABASE_URL: "mysql://root:root@localhost:3306/smartven_test"
+
+      - name: Executar Testes Unitários
+        run: |
+          cd smart-ven-backend
+          npm test
+        env:
+          DATABASE_URL: "mysql://root:root@localhost:3306/smartven_test"
