@@ -1,0 +1,19 @@
+<header class="header">
+  <div class="logo">
+    <h1>SmartVen</h1>
+  </div>
+
+  <nav class="nav">
+    <a href="#">Produtos</a>
+    <a href="#">Pedidos</a>
+    <a href="#">Métricas</a>
+  </nav>
+
+  <div class="conta">
+    <span class="saldo">Saldo: R$ {{ saldo() }}</span>
+    <span class="user">Olá, {{ userName() }}</span>
+    <!--Nesse caso eu quis exemplificar um exemplo de atribuição com signal, mas poderia ter feito sem, 
+    bastava tirar o colchetes do label e tirar o parenteses do sair -->
+    <app-primary-button [label] = 'sair()' (btnClicked)="showButtonClicked()"></app-primary-button>
+  </div>
+</header>

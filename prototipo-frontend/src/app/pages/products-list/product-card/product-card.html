@@ -1,0 +1,17 @@
+<div class = "card">
+    <div class = "card-content">
+        <img
+            [src] = "product().image"
+            class = "product-image"
+        >
+        <div class = 'product-info'>
+            <span class = 'product-title'>
+                {{product().title}}
+            </span>
+            <span class = 'product-price'>
+                {{'R$ ' + product().price}}
+            </span>
+            <app-primary-button label = "Comprar" class = "buy-button"></app-primary-button>        
+        </div>       
+    </div>
+</div>

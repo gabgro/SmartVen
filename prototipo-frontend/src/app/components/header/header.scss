@@ -1,0 +1,47 @@
+:host {
+  display: block;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 16px 24px;
+  background-color: #1e1e2f;
+  color: white;
+}
+
+/* Logo */
+.logo h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+/* Navegação */
+.nav {
+  display: flex;
+  gap: 20px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.nav a:hover {
+  color: #00d4ff;
+}
+
+.conta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.saldo {
+  font-weight: bold;
+  color: #00ff88;
+}
