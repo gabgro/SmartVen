@@ -6,12 +6,14 @@ describe('VendaService (CRUD e Regras)', () => {
   let service: VendaService;
   const mockPrisma = {
     user: {
-      create: jest.fn().mockImplementation((dto) => 
-        Promise.resolve({ id: 1, ...dto.data })
-      ),
-      findUnique: jest.fn().mockImplementation((args) => 
-        Promise.resolve({ id: args.where.id, nome: 'Danilo' })
-      ),
+      create: jest
+        .fn()
+        .mockImplementation((dto) => Promise.resolve({ id: 1, ...dto.data })),
+      findUnique: jest
+        .fn()
+        .mockImplementation((args) =>
+          Promise.resolve({ id: args.where.id, nome: 'Danilo' }),
+        ),
     },
     account: {
       create: jest.fn().mockImplementation((dto) => {

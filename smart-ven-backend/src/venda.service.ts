@@ -13,11 +13,13 @@ export class VendaService {
 
   async criarConta(userId: number, valorInicial: number) {
     if (!userId) {
-      throw new BadRequestException('Uma conta precisa de um usuário vinculado.');
+      throw new BadRequestException(
+        'Uma conta precisa de um usuário vinculado.',
+      );
     }
 
-    const userExists = await this.prisma.user.findUnique({ 
-      where: { id: userId } 
+    const userExists = await this.prisma.user.findUnique({
+      where: { id: userId },
     });
 
     if (!userExists) {

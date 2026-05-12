@@ -3,6 +3,7 @@
         <img
             [src] = "product().image"
             class = "product-image"
+            alt="Imagem do produto"
         >
         <div class = 'product-info'>
             <span class = 'product-title'>
@@ -11,7 +12,7 @@
             <span class = 'product-price'>
                 {{'R$ ' + product().price}}
             </span>
-            <app-primary-button label = "Comprar" class = "buy-button"></app-primary-button>        
-        </div>       
+            <app-primary-button label = "Comprar" class = "buy-button"></app-primary-button>
+        </div>
     </div>
 </div>
