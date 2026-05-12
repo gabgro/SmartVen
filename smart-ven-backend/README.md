@@ -8,7 +8,7 @@ Este é o motor de controle do SmartVen, desenvolvido com **NestJS**, **Prisma**
 - MySQL (Banco de dados via Docker)
 - Jest (Testes Unitários)
 
-## 🏗️ Como Executar o Projeto
+## 🏗️ Como Executar o Projeto :
 
 ### 1. Pré-requisitos
 - Node.js (v18+)
