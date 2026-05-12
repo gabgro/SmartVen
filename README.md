@@ -1,1 +1,2 @@
 # SmartVen
+Projeto e-commerce
