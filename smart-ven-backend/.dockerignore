@@ -1,0 +1,9 @@
+node_modules
+dist
+npm-debug.log
+.env
+.git
+.gitignore
+prisma/migrations
+test
+**/*.spec.ts
