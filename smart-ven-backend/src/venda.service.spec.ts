@@ -68,17 +68,14 @@ describe('VendaService (CRUD e Regras)', () => {
   });
 
   it('deve permitir criar um usuário sem conta', async () => {
-    const user = (await service.criarUsuario(
-      'Danilo',
-      'danilo@ufrn.br',
-    )) as UserOutput;
+    const user = await service.criarUsuario('Danilo', 'danilo@ufrn.br');
     expect(user).toHaveProperty('id');
     expect(user.nome).toBe('Danilo');
   });
 
   it('deve permitir criar uma conta vinculada a um usuário existente', async () => {
     const userId = 1;
-    const conta = (await service.criarConta(userId, 100.0)) as AccountOutput;
+    const conta = await service.criarConta(userId, 100.0);
     expect(conta.userId).toBe(userId);
     expect(conta.valor).toBe(100.0);
   });
