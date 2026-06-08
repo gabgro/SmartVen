@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Param, ParseIntPipe, Patch } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  ParseIntPipe,
+  Patch,
+} from '@nestjs/common';
 import { AccountService } from './Account.service';
 
 @Controller('contas')
@@ -22,7 +30,7 @@ export class AccountController {
   ) {
     return this.accountService.adicionarSaldo(userId, body.valor);
   }
-  
+
   @Patch('usuario/:userId/remover')
   async debitar(
     @Param('userId', ParseIntPipe) userId: number,

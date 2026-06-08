@@ -1,11 +1,19 @@
 import { Module } from '@nestjs/common';
-import { VendaController } from './venda.controller';
-import { VendaService } from './venda.service';
-import { PrismaService } from './prisma.service';
+import { UserModule } from './User/User.module';
+import { AccountModule } from './Account/Account.module';
+import { CategoryModule } from './Category/Category.module';
+import { ProductModule } from './Product/Product.module';
+import { SaleModule } from './Sale/Sale.module';
 
 @Module({
-  imports: [],
-  controllers: [VendaController],
-  providers: [VendaService, PrismaService],
+  imports: [
+    UserModule,
+    AccountModule,
+    CategoryModule,
+    ProductModule,
+    SaleModule,
+  ],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}

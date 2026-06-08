@@ -7,21 +7,52 @@ datasource db {
 }
 
 model User {
-  id      Int    @id @default(autoincrement())
-  nome    String
-  email   String @unique
-  conta   Account?
+  id    Int      @id @default(autoincrement())
+  nome  String
+  email String   @unique
+  conta Account?
+  sales Sale[]
 }
 
 model Account {
-  id        Int   @id @default(autoincrement())
-  valor     Float @default(0.0)
-  user      User  @relation(fields: [userId], references: [id])
-  userId    Int   @unique
+  id     Int   @id @default(autoincrement())
+  valor  Float @default(0.0)
+  user   User  @relation(fields: [userId], references: [id])
+  userId Int   @unique
+}
+
+model Category {
+  id       Int       @id @default(autoincrement())
+  nome     String    @unique
+  products Product[]
 }
 
 model Product {
-  id    Int    @id @default(autoincrement())
-  nome  String
-  preco Float
+  id         Int      @id @default(autoincrement())
+  nome       String
+  preco      Float
+  estoque    Int      @default(0)
+  ativo      Boolean  @default(true)
+  categoryId Int
+  category   Category @relation(fields: [categoryId], references: [id])
+  saleItems  SaleItem[]
+}
+
+model Sale {
+  id        Int        @id @default(autoincrement())
+  data      DateTime   @default(now())
+  userId    Int
+  user      User       @relation(fields: [userId], references: [id])
+  items     SaleItem[]
+  total     Float      @default(0.0)
+}
+
+model SaleItem {
+  id            Int     @id @default(autoincrement())
+  quantidade    Int
+  precoUnitario Float 
+  productId     Int
+  product       Product @relation(fields: [productId], references: [id])
+  saleId        Int
+  sale          Sale    @relation(fields: [saleId], references: [id], onDelete: Cascade)
 }

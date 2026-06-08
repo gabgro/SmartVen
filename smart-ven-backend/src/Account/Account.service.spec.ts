@@ -40,7 +40,11 @@ describe('AccountService', () => {
     it('deve criar uma conta com sucesso se o usuário existir e não tiver conta', async () => {
       mockPrisma.user.findUnique.mockResolvedValue({ id: 1, nome: 'Danilo' });
       mockPrisma.account.findUnique.mockResolvedValue(null);
-      mockPrisma.account.create.mockResolvedValue({ id: 10, valor: 0.0, userId: 1 });
+      mockPrisma.account.create.mockResolvedValue({
+        id: 10,
+        valor: 0.0,
+        userId: 1,
+      });
 
       const resultado = await service.criarConta(1);
       expect(resultado).toHaveProperty('id');
@@ -55,7 +59,11 @@ describe('AccountService', () => {
 
     it('deve lançar BadRequestException se o usuário já possuir uma conta activa', async () => {
       mockPrisma.user.findUnique.mockResolvedValue({ id: 1, nome: 'Danilo' });
-      mockPrisma.account.findUnique.mockResolvedValue({ id: 10, valor: 50.0, userId: 1 });
+      mockPrisma.account.findUnique.mockResolvedValue({
+        id: 10,
+        valor: 50.0,
+        userId: 1,
+      });
 
       await expect(service.criarConta(1)).rejects.toThrow(BadRequestException);
     });
@@ -63,8 +71,16 @@ describe('AccountService', () => {
 
   describe('adicionarSaldo', () => {
     it('deve somar valor ao saldo atual com sucesso', async () => {
-      mockPrisma.account.findUnique.mockResolvedValue({ id: 10, valor: 100.0, userId: 1 });
-      mockPrisma.account.update.mockResolvedValue({ id: 10, valor: 150.0, userId: 1 });
+      mockPrisma.account.findUnique.mockResolvedValue({
+        id: 10,
+        valor: 100.0,
+        userId: 1,
+      });
+      mockPrisma.account.update.mockResolvedValue({
+        id: 10,
+        valor: 150.0,
+        userId: 1,
+      });
 
       const resultado = await service.adicionarSaldo(1, 50.0);
       expect(resultado.valor).toBe(150.0);
@@ -73,15 +89,27 @@ describe('AccountService', () => {
 
   describe('removerSaldo', () => {
     it('deve subtrair o valor do saldo com sucesso se houver saldo suficiente', async () => {
-      mockPrisma.account.findUnique.mockResolvedValue({ id: 10, valor: 100.0, userId: 1 });
-      mockPrisma.account.update.mockResolvedValue({ id: 10, valor: 60.0, userId: 1 });
+      mockPrisma.account.findUnique.mockResolvedValue({
+        id: 10,
+        valor: 100.0,
+        userId: 1,
+      });
+      mockPrisma.account.update.mockResolvedValue({
+        id: 10,
+        valor: 60.0,
+        userId: 1,
+      });
 
       const resultado = await service.removerSaldo(1, 40.0);
       expect(resultado.valor).toBe(60.0);
     });
 
     it('deve lançar BadRequestException se o saldo for insuficiente', async () => {
-      mockPrisma.account.findUnique.mockResolvedValue({ id: 10, valor: 30.0, userId: 1 });
+      mockPrisma.account.findUnique.mockResolvedValue({
+        id: 10,
+        valor: 30.0,
+        userId: 1,
+      });
 
       await expect(service.removerSaldo(1, 50.0)).rejects.toThrow(
         BadRequestException,

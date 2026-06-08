@@ -37,7 +37,7 @@ describe('UserService', () => {
   describe('criarUsuario', () => {
     it('deve criar um usuário com sucesso se o email for único', async () => {
       const dto = { nome: 'Danilo', email: 'danilo@ufrn.br' };
-      
+
       mockPrisma.user.findUnique.mockResolvedValue(null);
       mockPrisma.user.create.mockResolvedValue({ id: 1, ...dto });
 
@@ -48,7 +48,7 @@ describe('UserService', () => {
 
     it('deve lançar BadRequestException se o email já estiver cadastrado', async () => {
       const dto = { nome: 'Danilo', email: 'danilo@ufrn.br' };
-      
+
       mockPrisma.user.findUnique.mockResolvedValue({ id: 1, ...dto });
 
       await expect(service.criarUsuario(dto.nome, dto.email)).rejects.toThrow(
@@ -59,7 +59,11 @@ describe('UserService', () => {
 
   describe('buscarPorId', () => {
     it('deve retornar um usuário se ele existir', async () => {
-      const usuarioEsperado = { id: 1, nome: 'Danilo', email: 'danilo@ufrn.br' };
+      const usuarioEsperado = {
+        id: 1,
+        nome: 'Danilo',
+        email: 'danilo@ufrn.br',
+      };
       mockPrisma.user.findUnique.mockResolvedValue(usuarioEsperado);
 
       const resultado = await service.buscarPorId(1);

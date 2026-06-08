@@ -1,4 +1,8 @@
-import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { PrismaService } from '../prisma.service';
 
 @Injectable()
@@ -17,7 +21,9 @@ export class AccountService {
       where: { userId },
     });
     if (contaExiste) {
-      throw new BadRequestException('Este usuário já possui uma conta vinculada.');
+      throw new BadRequestException(
+        'Este usuário já possui uma conta vinculada.',
+      );
     }
 
     return this.prisma.account.create({
@@ -37,7 +43,9 @@ export class AccountService {
 
   async adicionarSaldo(userId: number, quantia: number) {
     if (quantia <= 0) {
-      throw new BadRequestException('O valor a ser adicionado deve ser maior que zero.');
+      throw new BadRequestException(
+        'O valor a ser adicionado deve ser maior que zero.',
+      );
     }
     const conta = await this.buscarPorUserId(userId);
 
@@ -49,13 +57,17 @@ export class AccountService {
 
   async removerSaldo(userId: number, quantia: number) {
     if (quantia <= 0) {
-      throw new BadRequestException('O valor a ser removido deve ser maior que zero.');
+      throw new BadRequestException(
+        'O valor a ser removido deve ser maior que zero.',
+      );
     }
 
     const conta = await this.buscarPorUserId(userId);
-    
+
     if (conta.valor < quantia) {
-      throw new BadRequestException('Saldo insuficiente para realizar esta operação.');
+      throw new BadRequestException(
+        'Saldo insuficiente para realizar esta operação.',
+      );
     }
 
     return this.prisma.account.update({
