@@ -1,4 +1,4 @@
-import { Component, computed, inject, input } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { CartService } from '../../../services/cart';
 import { PrimaryButton } from "../../../components/primary-button/primary-button";
 
