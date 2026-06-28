@@ -2,6 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CartItemComponent } from './cart-item';
 
+
+
 describe('CartItem', () => {
   let component: CartItemComponent;
   let fixture: ComponentFixture<CartItemComponent>;
@@ -13,7 +15,7 @@ describe('CartItem', () => {
     .compileComponents();
 
     fixture = TestBed.createComponent(CartItemComponent);
-    fixture.componentRef.setInput('product', {
+    fixture.componentRef.setInput('item', {
       id:4,
       title: 'Coca Cola 350 ml',
       price: 5.99,
