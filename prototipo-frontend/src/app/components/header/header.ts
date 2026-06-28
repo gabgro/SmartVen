@@ -10,7 +10,7 @@ import { UserList } from '../../services/user-list';
   templateUrl: './header.html',
   styleUrl: './header.scss'
 })
-export class HeaderComponent {
+export class Header {
 
   cartServ = inject(CartService)
   userServ = inject(UserList)
