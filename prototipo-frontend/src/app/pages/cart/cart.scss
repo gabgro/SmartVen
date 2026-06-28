@@ -1,0 +1,11 @@
+.cart-container {
+    padding: 1.5rem;            /* p-6 */
+    display: flex;              
+    flex-direction: column;     /* flex-col */
+    gap: 1rem;                  /* gap-4 */
+}
+
+.cart-title {
+    font-size: 1.5rem;          /* aproximação (Tailwind não tem "2xl" sozinho, seria text-2xl) */
+    font-weight: 600;           /* opcional, melhora aparência */
+}

@@ -7,10 +7,14 @@ import { Component, input, output } from '@angular/core';
   styleUrl: './primary-button.scss',
 })
 export class PrimaryButton {
-  label = input('')
+  label = input('');
+  disabled = input(false); // 👈 ADICIONE ISSO
+
+  btnClicked = output();
 
   handleButtonClick(){
-    this.btnClicked.emit()
+    if (!this.disabled()) { // 👈 evita clique quando desabilitado
+      this.btnClicked.emit();
+    }
   }
-  btnClicked = output()
 }
