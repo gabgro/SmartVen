@@ -1,19 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProductCardComponent } from './product-card';
+import { CartItemComponent } from './cart-item';
 
-describe('ProductCard', () => {
-  let component: ProductCardComponent;
-  let fixture: ComponentFixture<ProductCardComponent>;
+
+
+describe('CartItem', () => {
+  let component: CartItemComponent;
+  let fixture: ComponentFixture<CartItemComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ProductCardComponent]
+      imports: [CartItemComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ProductCardComponent);
-    fixture.componentRef.setInput('product', {
+    fixture = TestBed.createComponent(CartItemComponent);
+    fixture.componentRef.setInput('item', {
       id:4,
       title: 'Coca Cola 350 ml',
       price: 5.99,

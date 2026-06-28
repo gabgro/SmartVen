@@ -1,0 +1,16 @@
+<div class="order-summary">
+    <h2 class="order-summary-title">Itens no Carrinho</h2>
+
+    <div class="order-summary-content">
+        <div class="order-summary-row">
+            <span class="order-summary-text">Total</span>
+            <span class="order-summary-total">{{"R$ " + total()}}</span>
+        </div>
+
+        <app-primary-button 
+            label="Checkout"
+            (btnClicked)="cartServ.clearCart()">
+        </app-primary-button>
+
+    </div>
+</div>

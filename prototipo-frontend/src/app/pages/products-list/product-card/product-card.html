@@ -1,18 +1,37 @@
-<div class = "card">
-    <div class = "card-content">
-        <img
-            [src] = "product().image"
-            class = "product-image"
-            alt="Imagem do produto"
-        >
-        <div class = 'product-info'>
-            <span class = 'product-title'>
-                {{product().title}}
-            </span>
-            <span class = 'product-price'>
-                {{'R$ ' + product().price}}
-            </span>
-            <app-primary-button label = "Comprar" class = "buy-button"></app-primary-button>
-        </div>
-    </div>
+<div class="card">
+  <div class="image-container">
+    <img
+      [src]="product().image"
+      alt="{{product().title}}"
+      class="product-image"
+    />
+
+    @let p = product();
+    <span class="stock-label" 
+          [class.in-stock]="p.stock"
+          [class.out-stock]="!p.stock">
+      @if (p.stock) {
+        {{p.stock}} left
+      } @else {
+        out of stock
+      }
+    </span>
+  </div>
+
+  <div class="product-info">
+    <h3 class="product-title">
+      {{product().title}}
+    </h3>
+
+    <p class="product-price">
+      R$ {{product().price}}
+    </p>
+
+    <app-primary-button
+      label="Add To Cart"
+      class="buy-button"
+      [disabled]="!product().stock"
+      (btnClicked)="cartServ.addToCart(product())">
+    </app-primary-button>
+  </div>
 </div>
