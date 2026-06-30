@@ -1,11 +1,13 @@
 import { Component, signal } from '@angular/core';
-import { HeaderComponent } from './components/header/header';
-import { ProductsListComponent } from './pages/products-list/products-list';
+import { RouterOutlet } from '@angular/router';
+import { Header } from './components/header/header';
 
 @Component({
   selector: 'app-root',
-  imports: [HeaderComponent, ProductsListComponent],
-  template: ` <app-header></ app-header> <app-products-list></ app-products-list>`,
+  imports: [Header, RouterOutlet],
+  template: ` <app-header></ app-header> 
+  <router-outlet></router-outlet>
+  `,
   styleUrl: './app.scss'
 })
 export class App {

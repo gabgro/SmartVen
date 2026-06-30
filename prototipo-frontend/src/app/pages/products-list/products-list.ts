@@ -9,35 +9,43 @@ import { ProductCardComponent } from "./product-card/product-card";
   styleUrl: './products-list.scss',
 })
 export class ProductsListComponent {
-  products = signal<Product[]>([
+
+  //Exemplo para pegar os dados da api, poderia ter usado cliente http também e rxjs e observables
+  /* async ngOnInit(){
+    const res = await fetch('https://fakestoreapi.com/products');
+    const data = await res.json();
+    this.products.set(data)
+  }
+  */
+  products = signal<Product[]>([ 
     {
     id: 1,
-      title: 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops',
-      price: 109.95,
-      image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png',
+      title: 'Hamburguer',
+      price: 31.95,
+      image: 'https://img.magnific.com/fotos-gratis/hamburguer-de-queijo-classico-com-costeleta-de-carne-legumes-e-cebola-isolados-em-um-fundo-branco_123827-29709.jpg?semt=ais_hybrid&w=740&q=80',
       stock: 10,
     },
     {
       id: 2,
-      title: 'Mens Casual Premium Slim Fit T-Shirts ',
-      price: 22.3,
+      title: 'Porção de Batata Frita',
+      price: 26.3,
       image:
-        'https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_t.png',
+        'https://sachefmio.blob.core.windows.net/fotos/batata-frita-por%C3%A7%C3%A3o-b1d9fb3b-475e-4c98-9e6e-fc624b1c252c.jpg',
       stock: 0,
     },
     {
       id: 3,
-      title: 'Mens Cotton Jacket',
-      price: 55.99,
+      title: 'Pizza Calabresa',
+      price: 51.99,
 
-      image: 'https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_t.png',
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8_AXeJBetG_rsulZG5uDUKA04D_xyJdUaKQGiSVeyuA&s=10',
       stock: 5,
     },
     {
       id: 4,
-      title: 'Mens Casual Slim Fit',
-      price: 15.99,
-      image: 'https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_t.png',
+      title: 'Coca Cola 350 ml',
+      price: 5.99,
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ36sMgVakFA-E3GEl5x36h76y_F4z9QL1BXC8hAe-1nlFMhN-S5uzvL8Y&s=10',
       stock: 7,
     },
   ])

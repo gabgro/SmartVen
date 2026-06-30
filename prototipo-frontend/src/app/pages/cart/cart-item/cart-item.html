@@ -1,0 +1,15 @@
+<div class="cart-item">
+    <img [src]="item().image" alt = "Imagem Produto" class="cart-item-image" />
+
+    <div class="cart-item-info">
+        <span class="cart-item-title">{{item().title}}</span>
+        <span class="cart-item-price">{{'R$ ' + item().price}}</span>
+    </div>
+
+    <div class="cart-item-spacer"></div>
+
+    <app-button 
+        label="Remove" 
+        (btnClicked)="cartServ.removeFromCart(item().id)">
+    </app-button>
+</div>

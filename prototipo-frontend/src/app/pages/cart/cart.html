@@ -1,0 +1,9 @@
+<div class="cart-container">
+    <h2 class="cart-title">Shopping Cart</h2>
+
+    @for (item of cartServ.cart(); track item.id) {
+        <app-cart-item [item]="item"></app-cart-item>
+    }
+
+    <app-order-summary></app-order-summary>
+</div>

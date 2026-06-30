@@ -12,10 +12,13 @@
   color: white;
 }
 
-/* Logo */
-.logo h1 {
+/* Se tivesse um h1 que eu queria estilizar dentro do div com class = logo, então seria .logo h1 */
+.logo {
   margin: 0;
   font-size: 20px;
+  border: none;
+  color: white;
+  background-color: #1e1e2f;
 }
 
 /* Navegação */
